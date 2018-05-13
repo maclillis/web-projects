@@ -1,0 +1,325 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+    font-family: "ubuntu";
+    src: url("../fonts/UbuntuTitling-Bold-webfont.eot");
+    src: url("../fonts/UbuntuTitling-Bold-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/UbuntuTitling-Bold-webfont.woff") format("woff"),
+         url("../fonts/UbuntuTitling-Bold-webfont.ttf") format("truetype"),
+         url("../fonts/UbuntuTitling-Bold-webfont.svg#ubuntu_titlingbold") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+#ad-wrapper {
+    font-family: "ubuntu", "Helvetica Neue", Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: -1%;
+}
+
+#game-hud div {
+    font-size: 19pt;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#game-world {
+    width: 100%;
+    height: 100%;
+    background: rgb(66, 137, 186);
+    background-size: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+#game-hud {
+    width: 97%;
+    height: 100%;
+    margin: 3.5% 3%;
+    top: 0;
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+}
+
+#game-minutes {
+    position: absolute;
+    top: 0;
+    left: 1%;
+}
+
+#game-clock {
+    width: 50%;
+    text-align: left;
+    position: absolute;
+    top: 0;
+    left: 6%;
+}
+
+#game-score {
+    width: 50%;
+    text-align: left;
+    position: absolute;
+    top: 0;
+    left: 19%;
+}
+
+#game-counter {
+    position: absolute;
+    top: 0;
+    left: 32%;
+}
+
+#oneup-yellow, #oneup-choco, #oneup-lollipop {
+    width: 40%;
+    position: absolute;
+    top: 40%;
+    left: 26%;
+    display: none;
+    -webkit-transform-origin: 50% 50%;
+}
+
+#game-basket-collision {
+    position: absolute;
+    width: 80%;
+    height: 5%;
+    top: 20%;
+    left: 42%;
+    opacity: 0.5;
+    z-index: 1002;
+}
+
+#game-basket-wrapper {
+    width: 25%;
+    height: 25%;
+    position: absolute;
+    bottom: 3%;
+    left: 37%;
+}
+#game-basket {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 2%;
+    left: 4%;
+    z-index: 100;
+    display: none;
+}
+
+.yellow-candy, .choco-candy, .lollipop-candy {
+    width: 9%;
+    position: absolute;
+    top: -30%
+}
+
+#cherry-bomb {
+    width: 9%;
+    position: absolute;
+}
+
+#game-start-screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: 50;
+}
+
+#game-start-screen img, #game-end-screen img {
+    position: absolute;
+    z-index: 51;
+}
+
+#game-start-countdown {
+    text-align: center;
+    width: 100%;
+    top: 40%;
+    left: 0;
+    position: absolute;
+    z-index: 50;
+    pointer-events: none;
+}
+
+#game-start-countdown-ready, #game-start-countdown-set, #game-start-countdown-go {
+    width: 30%;
+    text-align: center;
+    font-size: 21pt;
+    color: #FFFFFF;
+    position: absolute;
+    opacity: 0;
+    left: 35%;
+    z-index: 40;
+}
+
+#game-drapes-over, #game-end-drapes-over {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 11;
+}
+
+#game-drapes-left, #game-end-drapes-left {
+    width: 50%;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 10;
+}
+
+#game-drapes-right, #game-end-drapes-right {
+    width: 50%;
+    position: absolute;
+    top:0;
+    right: 0;
+    z-index: 10;
+}
+
+#game-title-catch {
+    width:85%;
+    left:5%;
+    top:16%
+}
+
+#game-title-candy {
+    width:85%;
+    left:7%;
+    top:34%
+}
+
+#game-title-the {
+    width: 21%;
+    top: 28%;
+    left: 38%;
+    -webkit-perspective: 600px;
+    perspective: 600px;
+}
+
+#game-title-basket {
+    width: 27%;
+    top: 59%;
+    left: 36%;
+}
+
+#game-title-cta {
+    width: 29%;
+    top: 72%;
+    left: 35%;
+}
+
+#game-end-screen {
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-size: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;
+}
+
+#game-end-circle {
+    position: absolute;
+    z-index: 3;
+    width: 37%;
+    top: 39%;
+    left: 47%;
+}
+
+#game-end-cta-more {
+    position: absolute;
+    z-index: 3;
+    width: 41%;
+    top: 87%;
+    left: 53%;
+    transform:scale(0);
+    -webkit-transform:scale(0);
+}
+
+#game-end-cta-play {
+    position:absolute;
+    z-index: 3;
+    width: 45%;
+    top: 87%;
+    left: 5%;
+    transform:scale(0);
+    -webkit-transform:scale(0);
+}
+
+.game-end-stars, .game-end-empty-stars {
+    width: 20%;
+    display: inline-block;
+    position: relative !important;
+    top: 16%;
+    margin-right: -8%;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    opacity: 0;
+}
+
+#game-end-stars-wrapper, #game-end-empty-stars-wrapper {
+    width: 100%;
+    position: absolute;
+    top: 66%;
+    left: 13%;
+    display: inline-block;
+}
+
+#game-final-score {
+    width: 26%;
+    height: 31%;
+    font-size: 72pt;
+    font-weight: bolder;
+    color: #fff;
+    z-index: 60;
+    position: absolute;
+    text-align: center;
+    top: 29%;
+    left: 63%;
+    transform-origin: 50% 50% 0;
+    -webkit-transform-origin: 50% 50% 0;
+}
+
+#game-timesup-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2
+}
+
+#game-timesup-text {
+    width: 50%;
+    top: 20%;
+    left: 25%;
+    position: absolute;
+    z-index: 2
+}
+
+#game-paused {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    opacity: 0;
+}
+
+#game-instructions {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity:0;
+    pointer-events: none;
+}

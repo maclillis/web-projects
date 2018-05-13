@@ -1,0 +1,98 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="assets/css/candystyle.css" >
+<script src="../../js/deps/Draggable.min.js"></script>
+<script src="../../js/deps/TweenMax.min.js"></script>
+<script src="../../js/deps/ThrowPropsPlugin.min.js"></script>
+<style>
+</style>
+
+</head>
+<body>
+
+<div id="ad-wrapper">
+
+    <div id="game-start-screen">
+
+        <img src="assets/drapesleft.png" id="game-drapes-left" />
+        <img src="assets/drapesright.png" id="game-drapes-right" />
+        <img src="assets/drapesover.png" id="game-drapes-over" />
+
+    <div id="game-start-titles">
+        <img id="game-title-catch" src="assets/title_catch.png" />
+        <img id="game-title-candy" src="assets/title_candy.png" />
+        <img id="game-title-the" src="assets/title_the.png" />
+
+        <div id="game-title-basketWrapper">
+            <img id="game-title-basket" src="assets/title_basket.png" />
+        </div>
+    </div>
+    </div>
+
+    <div id="game-start-countdown">
+        <div id="game-start-countdown-ready">Ready?</div>
+        <div id="game-start-countdown-set">Set?</div>
+        <div id="game-start-countdown-go">Candy!</div>
+    </div>
+
+    <div id="game-hud">
+        <img src="assets/clock.png" style="width:5%;vertical-align:top;padding-top:1.5%;" />
+        <div id="game-clock">30</div>
+
+        <div id="game-score">
+            <img src="assets/hudcandy.png" style="width:29%;vertical-align:top;padding: 3% 24% 0 0;" />
+            <div id="game-counter">0</div>
+        </div>
+
+        <img src="assets/oneup_yellow.png" id="oneup-yellow" />
+        <img src="assets/oneup_lollipop.png" id="oneup-lollipop"/>
+        <img src="assets/oneup_choco.png" id="oneup-choco" />
+
+    </div>
+
+    <div id="game-world">
+        <img src="assets/instructions.png" id="game-instructions" />
+
+        <div id="game-basket-wrapper">
+            <div id="game-basket-collision"></div>
+            <img id="game-basket" src="assets/basket.png" />
+        </div>
+
+        <!-- The candys -->
+        <img class="yellow-candy" src="assets/yellow_candy.png"/>
+        <img class="lollipop-candy" src="assets/lollipop_candy.png"/>
+        <img class="choco-candy" src="assets/choco_candy.png"/>
+
+    </div>
+
+    <div id="game-end-screen">
+        <img src="assets/drapesleft.png" id="game-end-drapes-left" />
+        <img src="assets/drapesright.png" id="game-end-drapes-right" />
+        <img src="assets/drapesover.png" id="game-end-drapes-over" />
+        <img src="assets/timesup.png" id="game-timesup-text" />
+        <img src="assets/timesupoverlay.png" id="game-timesup-overlay" />
+        <img src="assets/playagain.png" id="game-end-cta-play" />
+        <img src="assets/readmore.png" id="game-end-cta-more"/>
+
+    <div id="game-end-stars-wrapper">
+        <img src="assets/star.png" class="game-end-stars" id="game-end-star-1_" />
+        <img src="assets/star.png" class="game-end-stars" id="game-end-star-2_"/>
+        <img src="assets/star.png" class="game-end-stars" id="game-end-star-3_"/>
+        <img src="assets/star.png" class="game-end-stars" id="game-end-star-4_"/>
+        <img src="assets/star.png" class="game-end-stars" id="game-end-star-5_"/>
+    </div>
+
+    <div id="game-end-empty-stars-wrapper">
+        <img src="assets/empty_star.png" class="game-end-empty-stars" id="game-end-empty-star-1_" />
+        <img src="assets/empty_star.png" class="game-end-empty-stars" id="game-end-empty-star-2_"/>
+        <img src="assets/empty_star.png" class="game-end-empty-stars" id="game-end-empty-star-3_"/>
+        <img src="assets/empty_star.png" class="game-end-empty-stars" id="game-end-empty-star-4_"/>
+        <img src="assets/empty_star.png" class="game-end-empty-stars" id="game-end-empty-star-5_"/>
+    </div>
+
+    <div id="game-final-score">0</div>
+    </div>
+</div>
+<script src="assets/js/catchc_game.js"></script>
+</body>
+</html>

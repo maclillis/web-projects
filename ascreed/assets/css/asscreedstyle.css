@@ -1,0 +1,266 @@
+#wrapper_ {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  font-family: Arial, sans-serif;
+  color: white;
+  top: 0;
+  left: 0;
+}
+
+#banner_ {
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#drag-element_ {
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  opacity: 0;
+}
+
+#play-again_ {
+  width: 100%;
+  height: 36%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: none;
+}
+
+#start-backg-01 {
+  position: absolute;
+  width: 200%;
+  height: auto;
+  top: -27%;
+  right: -50%;
+}
+
+#start-backg-02 {
+  width: 183%;
+  left: -33%;
+  position: absolute;
+}
+
+#start-backg-03 {
+  width: 183%;
+  position: absolute;
+  right: -19%;
+}
+
+#start-backg-04 {
+  width: 183%;
+  position: absolute;
+  top: 0;
+  left: -40%;
+}
+
+#start-backg-static {
+  position: absolute;
+  width: 200%;
+  height: auto;
+  top: -27%;
+  right: -50%;
+}
+
+#start-storm {
+  position: absolute;
+  top: 0;
+  left: -350%;
+  width: 400%;
+}
+
+#start-black-solid {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  pointer-events: none
+}
+
+#start-overlay, #end-overlay {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+}
+
+#start-btn, #end-again-btn {
+  position: absolute;
+  width: 77%;
+  top: 52%;
+  left: 11.5%;
+}
+
+#start-btn-active, #end-again-btn-active {
+  position: absolute;
+  width: 77%;
+  top: 52%;
+  left: 11.5%;
+  display: none;
+}
+
+#start-readmore-btn, #end-readmore-btn {
+  position: absolute;
+  width: 77%;
+  top: 66%;
+  left: 11.5%;
+}
+
+#start-readmore-btn-active, #end-readmore-btn-active {
+  position: absolute;
+  width: 77%;
+  top: 66%;
+  left: 11.5%;
+  display: none;
+}
+
+#start-menu-bar-left, #end-menu-bar-left {
+  width: auto;
+  height: 100%;
+  position: absolute;
+  top: -8%;
+  left: 0;
+}
+
+#start-menu-bar-right, #end-menu-bar-right {
+  width: auto;
+  height: 100%;
+  position: absolute;
+  top: -8%;
+  right: 0;
+}
+
+#game-landscape {
+  width: auto;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -54%;
+}
+
+#game-storm {
+  position: absolute;
+  width: 400%;
+  height: auto;
+  top: 0;
+  left: 101%;
+}
+
+#end-screen_ {
+  background: url("../../assets/img/end_back.jpg");
+  background-size: 100%;
+  opacity: 0;
+  display: none;
+}
+
+#wrapper_ .end-points_ {
+  font-size: 4.0em;
+  text-align: center;
+  position: absolute;
+  top: 32%;
+  left: -22%;
+  width: 100%;
+  height: 10%;
+}
+
+#end-points-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+#timer_ {
+  background: linear-gradient(to right, #b89442, #fadf84);
+  -webkit-background: linear-gradient(to right, #b89442, #fadf84);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6%;
+  pointer-events: none;
+}
+
+#score_ {
+  font-family: Arial, sans-serif;
+  color: white;
+  font-size: 2em;
+  font-weight: bolder;
+  text-align: left;
+  position: absolute;
+  top: 2%;
+  left: 0%;
+  width: 20%;
+  height: 10%;
+  padding: 2%;
+  z-index: 100;
+}
+
+#trail-container_ div,
+#trail-container_ img {
+  position: absolute;
+}
+
+.falling-object_ {
+  opacity: 1;
+  position: absolute;
+  left: 0%;
+  top: -25%;
+  width: 22%;
+  height: 8%;
+}
+
+#fall-object-01_ {
+  background: url("../img/arrow.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.full-size_ {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+}
+
+.no-pointers {
+  pointer-events: none;
+}
+
+#ac-bayak_ {
+  background: url("../img/bayak_ingame.png");
+  background-size: 100%;
+  pointer-events: none;
+}
+
+#splat_ {
+  background: url("../img/splat.png");
+  background-size: 100%;
+  display: none;
+  pointer-events: none;
+}
+
+#game-intstructions {
+  background: url("../img/manual.png");
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  pointer-events: none;
+}

@@ -1,0 +1,465 @@
+<html>
+<head>
+    <script src="../../js/deps/TweenMax.min.js"></script>
+    <script src="../../js/deps/ThrowPropsPlugin.min.js"></script>
+    <script type="text/javascript" src="js/dollar.js"></script>
+    <style>
+    #ws-wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+        background: #131b1e url("assets/background.jpg") 0 0 no-repeat;
+        background-size: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica;
+        touch-action: none;
+    }
+
+    #ws-banner {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+    }
+
+    #ws-canvas {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    #ws-bang-splash, #ws-simon-head-intro, #ws-simon-title-intro,
+    #ws-simon-says-intro, #ws-simon-apple-intro, #ws-simon-cta-play,
+    #ws-simon-body-ingame, #ws-simon-head-ingame, #ws-simon-head-ingame_blink,
+    #ws-simon-score-hud, #ws-simon-head-ingame_nay, #ws-simon-head-ingame_sucess {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    #ws-bang-splash {
+      top: 3%;
+    }
+
+    #ws-simon-cta-play {
+      z-index:50;
+    }
+
+    #ws-simon-desk-warning {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    #ws-simon-tv-static {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    #ws-simon-head-ingame, #ws-simon-head-ingame_blink, #ws-simon-head-ingame_nay, #ws-simon-head-ingame_sucess {
+      width: 27%;
+      height: auto;
+      top: 53.5%;
+      left: 72%;
+      transform: rotate(-10deg);
+      -webkit-transform: rotate(-10deg);
+      transform-origin: bottom center;
+    }
+
+    #ws-simon-head-ingame_blink, #ws-simon-head-ingame_nay {
+      display:none;
+    }
+
+    #ws-simon-bubble-circle, #ws-simon-bubble-rectangle, #ws-simon-head-sucess,
+    #ws-simon-bubble-triangle, #ws-simon-bubble-v, #ws-simon-bubble-x, #ws-simon-bubble-tryagain,
+    #ws-simon-bubble-tryagain, #ws-simon-bubble-sucess, #ws-simon-bubble-end {
+      width: 33%;
+      height: auto;
+      position: absolute;
+      top: 54%;
+      left: 49%;
+      display: none;
+    }
+
+    #ws-simon-apple-ingame, #ws-simon-noapple-ingame {
+      width: 30%;
+      height: auto;
+      position: absolute;
+      top: 10%;
+      left: 34%;
+      display: none;
+    }
+
+    #ws-simon-apple-score-01_, #ws-simon-apple-score-02_, #ws-simon-apple-score-03_, #ws-simon-apple-score-04_,
+    #ws-simon-apple-score-05_ {
+      width: 6%;
+      position: absolute;
+      bottom: 2%;
+      left: 19%;
+      display: none;
+    }
+
+    #ws-doas-text {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    #ws-simon-endcta {
+      width: 40%;
+      height: auto;
+      position: absolute;
+      bottom: 5%;
+      left: 5%;
+      display: none;
+    }
+
+    #ws-simon-end-score {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #ws-end-apple-01_, #ws-end-apple-02_, #ws-end-apple-03_, #ws-end-apple-04_, #ws-end-apple-05_ {
+      width:17%;
+      height: auto;
+      position: absolute;
+      top: 20%;
+      display: none;
+    }
+
+    #ws-end-apple-01_ {left:5%;}
+    #ws-end-apple-02_ {left:23%;}
+    #ws-end-apple-03_ {left:41%;}
+    #ws-end-apple-04_ {left:59%;}
+    #ws-end-apple-05_ {left:78%;}
+    </style>
+    </head>
+    <body>
+        <div id="ws-wrapper">
+            <div id="ws-banner">
+              <!-- INTRO ASSETS -->
+              <img src="assets/bang-splash.png" id="ws-bang-splash" />
+              <img src="assets/simon_head_intro.png" id="ws-simon-head-intro" />
+              <img src="assets/simon_title.png" id="ws-simon-title-intro" />
+              <img src="assets/says.png" id="ws-simon-says-intro" />
+              <img src="assets/apple_intro.png" id="ws-simon-apple-intro" />
+              <img src="assets/play_cta.png" id="ws-simon-cta-play" />
+
+              <img src="assets/static.gif" id="ws-simon-tv-static" />
+              <img src="assets/desk_warning.png" id="ws-simon-desk-warning" />
+
+              <!-- IN GAME ASSETS -->
+              <canvas id="ws-canvas"></canvas>
+              <img src="assets/simon_body_ingame.png" id="ws-simon-body-ingame" />
+              <img src="assets/simon_head_ingame.png" id="ws-simon-head-ingame" />
+              <img src="assets/simon_head_ingame_blink.png" id="ws-simon-head-ingame_blink" />
+              <img src="assets/simon_head_ingame_nay.png" id="ws-simon-head-ingame_nay" />
+              <img src="assets/simon_head_sucess.png" id="ws-simon-head-ingame_sucess" />
+              <img src="assets/score_hud.png" id="ws-simon-score-hud" />
+              <img src="assets/bubble_circle.png" id="ws-simon-bubble-circle" />
+              <img src="assets/bubble_rectangle.png" id="ws-simon-bubble-rectangle" />
+              <img src="assets/bubble_triangle.png" id="ws-simon-bubble-triangle" />
+              <img src="assets/bubble_v.png" id="ws-simon-bubble-v" />
+              <img src="assets/bubble_x.png" id="ws-simon-bubble-x" />
+
+              <img src="assets/apple_ingame.png" id="ws-simon-apple-ingame" />
+              <img src="assets/noapple_ingame.png" id="ws-simon-noapple-ingame" />
+              <img src="assets/apple_ingame.png" id="ws-simon-apple-score-01_" />
+              <img src="assets/apple_ingame.png" id="ws-simon-apple-score-02_" />
+              <img src="assets/apple_ingame.png" id="ws-simon-apple-score-03_" />
+              <img src="assets/apple_ingame.png" id="ws-simon-apple-score-04_" />
+              <img src="assets/apple_ingame.png" id="ws-simon-apple-score-05_" />
+              <img src="assets/bubble_tryagain.png" id="ws-simon-bubble-tryagain" />
+              <img src="assets/bubble_sucess.png" id="ws-simon-bubble-sucess" />
+              <img src="assets/bubble_end.png" id="ws-simon-bubble-end" />
+
+              <img src="assets/doas.png" id="ws-doas-text" />
+              <img src="assets/endcta.png" id="ws-simon-endcta" />
+              <img src="assets/endscore.png" id="ws-simon-end-score" />
+              <img src="assets/apple_ingame.png" id="ws-end-apple-01_" />
+              <img src="assets/apple_ingame.png" id="ws-end-apple-02_" />
+              <img src="assets/apple_ingame.png" id="ws-end-apple-03_" />
+              <img src="assets/apple_ingame.png" id="ws-end-apple-04_" />
+              <img src="assets/apple_ingame.png" id="ws-end-apple-05_" />
+
+              <!-- END GAME ASSETS -->
+            </div>
+        </div>
+        <script>
+
+        (function() {
+          'use strict';
+
+          var simonCanvas = document.getElementById("ws-canvas");
+
+          var introAnimationTl = new TimelineMax({delay:0.5});
+          var simonBodyIngameTl = new TimelineMax({paused:true, delay:1.2});
+          var appleAnimTl = new TimelineMax({paused:true});
+          var noAppleAnimTl = new TimelineMax({paused:true});
+          var endAnimTl = new TimelineMax();
+
+
+          appleAnimTl
+            .fromTo("#ws-simon-apple-ingame", 0.7, {scale:0, display:"block"}, {scale:1, ease:Elastic.easeOut})
+            .to("#ws-simon-apple-ingame", 0.7, {opacity:0, delay:0.5})
+            .set("#ws-simon-head-ingame_sucess", {display:"block"}, "-=1.70")
+            .set("#ws-simon-head-ingame_sucess", {display:"none"}, "-=0.5");
+
+          noAppleAnimTl
+            .fromTo("#ws-simon-noapple-ingame", 0.7, {scale:0, display:"block"}, {scale:1, ease:Bounce.easeOut})
+            .to("#ws-simon-noapple-ingame", 0.7, {opacity:0, delay:0.5})
+            .set("#ws-simon-head-ingame_nay", {display:"block"}, "-=1.70")
+            .set("#ws-simon-head-ingame_nay", {display:"none"}, "-=0.5");
+
+          /* ANIMATIONS */
+
+          introAnimationTl
+            .fromTo("#ws-bang-splash", 0.8, {scale:0, display:"block"}, {scale:1, ease:Elastic.easeOut})
+            .fromTo("#ws-simon-head-intro", 0.4, {scale:0, display:"block"}, {scale:1, ease:Bounce.easeOut}, "-=0.3")
+            .fromTo("#ws-simon-title-intro", 1, {scale:2.5, rotation:-1080, display:"block", opacity:0}, {scale:1, rotation:0, opacity:1}, "-=0.3")
+            .set(["#ws-simon-cta-play", "#ws-simon-apple-intro"], {display:"block"}, "-=0.14")
+            .fromTo("#ws-simon-says-intro", 0.2, {xPercent:-500, display:"block", opacity:0}, {xPercent:0, opacity:1}, "-=0.4")
+            .set("#ws-doas-text", {display:"block", delay:1});
+
+            TweenMax.to("#ws-bang-splash", 9, {rotation:360, repeat:-1, ease:Linear.easeNone, delay:2});
+
+          simonBodyIngameTl
+            .fromTo("#ws-simon-body-ingame", 0.5, {yPercent:200, display:"block"}, {yPercent:0})
+            .fromTo("#ws-simon-head-ingame", 0.5, {yPercent:200, display:"block"}, {yPercent:0}, "-=0.5")
+            .add(TweenMax.fromTo(["#ws-simon-head-ingame", "#ws-simon-head-ingame_blink", "#ws-simon-head-ingame_nay", "#ws-simon-head-ingame_sucess"], 3, {rotation:-7}, {rotation:7, repeat:-1, yoyo:true, ease:Linear.easeInOut}));
+
+            function startSimonGame(){
+
+              simonBodyIngameTl.play();
+              setTimeout(function () {
+                TweenMax.set("#ws-simon-score-hud", {display:"block"});
+                TweenMax.fromTo("#ws-simon-bubble-circle", 0.3, {display:"block", scaleX:0}, {transformOrigin: "50% 0%", scaleX:1, delay:0.3});
+              }, 1750);
+
+              setInterval(function () {
+               TweenMax.set("#ws-simon-head-ingame_blink", {display:"block"});
+               TweenMax.set("#ws-simon-head-ingame_blink", {display:"none", delay:0.5});
+               TweenMax.set("#ws-simon-bubble-circle",{display:"block"});
+              }, 4000);
+              simonCanvas.style.display = "block";
+            }
+
+            document.getElementById("ws-simon-cta-play").addEventListener("click", function(){
+
+              //Detect if user is on mobile or not to determine game availability atm
+              if (/Mobi/.test(navigator.userAgent)) {
+                  introAnimationTl.reverse();
+                  introAnimationTl.duration(1);
+                  startSimonGame();
+              } else {
+                // Display fallback
+                TweenMax.set("#ws-simon-desk-warning", {display:"block"});
+                TweenMax.set("#ws-simon-tv-static", {display:"block"});
+                TweenMax.set("#ws-doas-text", {display:"none"});
+                TweenMax.set("#ws-simon-cta-play", {display:"none"});
+              }
+            });
+
+            function endSimonGame(){
+              simonCanvas.style.display = "none";
+              endAnimTl
+                .set("#ws-simon-score-hud", {display:"none"})
+                .staggerTo(["#ws-simon-apple-score-01_", "#ws-simon-apple-score-02_", "#ws-simon-apple-score-03_", "#ws-simon-apple-score-04_", "#ws-simon-apple-score-05_"], 0.2, {yPercent:300}, 0.1)
+                .fromTo("#ws-simon-end-score", 0.5, {display:"block", opacity:0}, {opacity:1})
+                .staggerFromTo(["#ws-end-apple-01_", "#ws-end-apple-02_", "#ws-end-apple-03_", "#ws-end-apple-04_", "#ws-end-apple-05_"], 0.3, {scale:0, display:"block"}, {scale:1, ease:Bounce.easeOut}, 0.25)
+                .fromTo("#ws-simon-bubble-end", 0.3, {display:"block", scaleX:0}, {transformOrigin: "50% 0%", scaleX:1, delay:0.3})
+                .fromTo("#ws-simon-endcta", 0.5, {display: "block", yPercent:200}, {yPercent:0, delay:1});
+            }
+
+            document.getElementById("ws-simon-endcta").addEventListener("touchend", function(){
+              /*location.reload();*/
+              document.location.reload();
+            });
+
+          /*
+          DOLLAR.JS AVAILABLE RECOGNIZABLE GESTURES:
+
+          * Circle
+          * Rectangle
+          * X
+          * Left Square Bracket
+          * Right Square Bracket
+          * Left Curly Bracket
+          * Right Curly Bracket
+          * Check
+          * Caret (^)
+          * Zig-Zag
+          * Arrow
+          * Delete (⌂)
+          * Star
+
+          */
+            var oldX; var oldY;
+            var canvas;
+            var ctx;
+            var result;
+            var Name;
+            var _r = new DollarRecognizer();
+            var _points = [];
+            var threshold = 3;
+            var currentShape = "circle";
+
+            // Event listeners for mobile
+
+            document.addEventListener('touchstart', function(e){
+              e.preventDefault();
+              _points = [];
+              var touch = e.touches[0];
+              ctx.beginPath();
+              ctx.strokeStyle = "rgba(248,248,248,0.25)";
+              ctx.lineCap = "butt";
+              ctx.lineJoin = "butt";
+              ctx.lineWidth = ctx.canvas.width * 0.02;
+              oldX = touch.pageX;
+              oldY = touch.pageY;
+            }, false);
+            document.addEventListener('touchmove',function(e){
+              if (oldX - e.pageX < 3 && oldX - e.pageX > -3) {
+                return;
+              }
+              if (oldY - e.pageY < 3 && oldY - e.pageY > -3) {
+                return;
+              }
+              var touch = e.touches[0];
+              ctx.moveTo(oldX,oldY);
+              oldX = touch.pageX;
+              oldY = touch.pageY;
+              ctx.lineTo(oldX,oldY);
+              ctx.stroke();
+              ctx.shadowColor = 'rgba(248,248,248,0.10)';
+              ctx.shadowOffsetX = 0;
+              ctx.shadowOffsetY = 0;
+              ctx.shadowBlur = 2;
+              _points[_points.length] = new Point(oldX,oldY);
+            }, false);
+            document.addEventListener('touchend', function(e){
+              ctx.closePath();
+              if (_points.length >= 10) {
+                var result = _r.Recognize(_points);
+
+                switch (currentShape) {
+                  case "circle":
+                    if (result.Name === _r.Unistrokes[3].Name ){
+                      currentShape = "triangle";
+                      setTimeout(function () {
+                        TweenMax.fromTo("#ws-simon-bubble-circle", 0.3, {scaleX:1}, {transformOrigin: "50% 0%", scaleX:0, display:"none"});
+                        TweenMax.fromTo("#ws-simon-bubble-triangle", 0.3, {display:"block", scaleX:0}, {transformOrigin: "50% 0%", scaleX:1, delay:0.3});
+                      }, 1300);
+                      TweenMax.set("#ws-simon-apple-score-01_", {display:"block"});
+                      appleAnimTl.restart();
+                    } else {
+                      noAppleAnimTl.restart();
+                    }
+                    break;
+                  case "triangle":
+                    if (result.Name === _r.Unistrokes[0].Name ){
+                      currentShape = "x";
+                      setTimeout(function () {
+                        TweenMax.fromTo("#ws-simon-bubble-triangle", 0.3, {scaleX:1}, {transformOrigin: "50% 0%", scaleX:0, display:"none"});
+                        TweenMax.fromTo("#ws-simon-bubble-x", 0.3, {display:"block", scaleX:0}, {transformOrigin: "50% 0%", scaleX:1, delay:0.3});
+                      }, 1300);
+                      TweenMax.set("#ws-simon-apple-score-02_", {display:"block", xPercent:112});
+                      appleAnimTl.restart();
+                    } else {
+                      noAppleAnimTl.restart();
+                    }
+                    break;
+                  case "x":
+                    if (result.Name === _r.Unistrokes[1].Name ){
+                      currentShape = "rectangle";
+                      setTimeout(function () {
+                        TweenMax.fromTo("#ws-simon-bubble-x", 0.3, {scaleX:1}, {transformOrigin: "50% 0%", scaleX:0, display:"none"});
+                        TweenMax.fromTo("#ws-simon-bubble-rectangle", 0.3, {display:"block", scaleX:0}, {transformOrigin: "50% 0%", scaleX:1, delay:0.3});
+                      }, 1300);
+                      TweenMax.set("#ws-simon-apple-score-03_", {display:"block", xPercent:230});
+                      appleAnimTl.restart();
+                    } else {
+                      noAppleAnimTl.restart();
+                    }
+                    break;
+                  case "rectangle":
+                    if (result.Name === _r.Unistrokes[2].Name ){
+                      currentShape = "v";
+                      setTimeout(function () {
+                        TweenMax.fromTo("#ws-simon-bubble-rectangle", 0.3, {scaleX:1}, {transformOrigin: "50% 0%", scaleX:0, display:"none"});
+                        TweenMax.fromTo("#ws-simon-bubble-v", 0.3, {display:"block", scaleX:0}, {transformOrigin: "50% 0%", scaleX:1, delay:0.3});
+                      }, 1300);
+                      TweenMax.set("#ws-simon-apple-score-04_", {display:"block", xPercent:347});
+                      appleAnimTl.restart();
+                    } else {
+                      noAppleAnimTl.restart();
+                    }
+                    break;
+                  case "v":
+                    if (result.Name === _r.Unistrokes[10].Name ){
+                      currentShape = "circle";
+                      setTimeout(function () {
+                        TweenMax.fromTo("#ws-simon-bubble-v", 0.3, {scaleX:1}, {transformOrigin: "50% 0%", scaleX:0, display:"none"});
+                      }, 1300);
+                      TweenMax.set("#ws-simon-apple-score-05_", {display:"block", xPercent:457});
+                      appleAnimTl.restart();
+                      setTimeout(function () {
+                        endSimonGame();
+                        document.getElementById("ws-simon-head-ingame_nay").style.display = "none";
+                      }, 2000);
+                    } else {
+                      noAppleAnimTl.restart();
+                    }
+                    break;
+                }
+
+              }
+              clearCanvas();
+              _points = [];
+            }, false);
+
+              // Event listeners for deskotp
+
+            function clearCanvas(){
+              setTimeout(function () {
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+              }, 1000);
+            }
+
+            window.addEventListener("load", function(e) {
+              canvas = simonCanvas;
+              ctx = canvas.getContext("2d");
+              canvas.width = 375;
+              canvas.height = 375;
+            }, false);
+
+            document.getElementById("ws-wrapper").addEventListener('touchmove',function(e) {
+              e.preventDefault();
+            },false);
+
+        }());
+        </script>
+  </body>
+</html>
