@@ -96,10 +96,8 @@ window.addEventListener('deviceorientation', function(e) {
     /* crop the range from 0-360 to 135-225 to make it more responsive, so user don't have to rotate 360° to see left/right ends of banner */
     headingToPositionX = Math.round(mapRange(heading,135,225,0,panoramaImage.clientWidth - adWidth));
     if (headingToPositionX > (panoramaImage.clientWidth - adWidth)) {
-      trackGyro();
       headingToPositionX = panoramaImage.clientWidth - adWidth;
     } else if (headingToPositionX < 0){
-      trackGyro();
       headingToPositionX = 0;
     }
   }
